@@ -1,9 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.atsaug</groupId>
-    <artifactId>simplify</artifactId>
-    <version>1.0.0</version>
+    <artifactId>simplify-build</artifactId>
+    <version>${revision}</version>
     <packaging>pom</packaging>
+    <name>Simplify Build</name>
+    <description>Simplify Build</description>
+    <properties>
+        <revision>1.0.0.BUILD-SNAPSHOT</revision>
+        <main.basedir>${basedir}</main.basedir>
+    </properties>
+    <profiles>
+        <!-- 
+         Default profile for command line build and activeted by default
+         -->
+        <profile>
+            <id>default</id>
+            <activation>
+                <property>
+                    <name>!disable-simplify-default-profile</name>
+                </property>
+            </activation>
+        </profile>
+        <!-- 
+         M2E profile to allow easy import into eclipse
+         -->
+        <profile>
+            <id>m2e</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+        </profile>
+        <!--
+         Custom repository profile with snapshots activeted
+         -->
+        <profile>
+            <id>repository</id>
+            <activation>
+                <property>
+                    <name>repository</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
 </project>
