@@ -1,5 +1,10 @@
-dist: trusty
 language: java
-jdk:
-    - oraclejdk8
-    - openjdk11
+sudo: true
+dist: trusty
+jdk: oraclejdk9
+addons:
+  apt:
+    packages:
+      - oracle-java9-installer
+before_install:
+  - chmod +x mvnw
