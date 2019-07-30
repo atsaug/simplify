@@ -204,6 +204,7 @@ if [ "$MVNW_VERBOSE" = true ]; then
   echo $MAVEN_PROJECTBASEDIR
 fi
 MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+MAVEN_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/maven.config") $MAVEN_CONFIG"
 
 # For Cygwin, switch paths to Windows format before running java
 if $cygwin; then
@@ -223,6 +224,12 @@ MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
 export MAVEN_CMD_LINE_ARGS
 
 WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+echo "JAVACMD: " $JAVACMD
+echo "MAVEN_OPTS: " $MAVEN_OPTS
+echo "MAVEN_CONFIG: " $MAVEN_CONFIG
+echo "MAVEN_PROJECTBASEDIR: " $MAVEN_PROJECTBASEDIR
+echo "ARGUMENTS COMMAND LINE: " $@
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \

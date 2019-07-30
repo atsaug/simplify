@@ -3,20 +3,53 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>org.atsaug</groupId>
+    <!-- 
+     the basics
+     -->
+    <groupId>org.atsaug.commons</groupId>
     <artifactId>simplify-build</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>Simplify Build</name>
-    <description>Simplify Build</description>
     <properties>
         <revision>1.0.0.BUILD-SNAPSHOT</revision>
         <main.basedir>${basedir}</main.basedir>
     </properties>
+    <!-- 
+     more project information
+     -->
+    <name>Simplify Build</name>
+    <description>Simplify Build</description>
+    <url>https://github.com/atsaug/simplify</url>
+    <inceptionYear>2015</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repository</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>atsaug</id>
+            <name>Francesco Salvatore Guastamacchia</name>
+            <email>guastamacchia.francesco[at]gmail.com</email>
+            <url>https://github.com/atsaug</url>
+            <roles>
+                <role>Technical Lead</role>
+            </roles>
+        </developer>
+    </developers>
+    <!-- 
+     environment settings
+     -->
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/atsaug/simplify/issues</url>
+    </issueManagement>
     <profiles>
         <!-- 
-         Default profile for command line build and activeted by default
+         profile for command line build and activeted by default
          -->
         <profile>
             <id>default</id>
@@ -36,11 +69,41 @@
                     <name>m2e.version</name>
                 </property>
             </activation>
+            <modules>
+                <module>simplify-platform</module>
+                <module>simplify-samples</module>
+                <module>simplify-eclipse</module>
+                <module>simplify-cli</module>
+            </modules>
         </profile>
-        <!--
-         Custom repository profile with snapshots activeted
+        <!-- 
+         this profile is activated only when you want to compile platform, 
+         with './mvnw deploy' the components are deployed on the docker nexus
          -->
         <profile>
+            <id>platform</id>
+            <distributionManagement>
+                <repository>
+                    <id>releases</id>
+                    <name>releases</name>
+                    <!-- local docker nexus -->
+                    <url>http://${nexus.host}:${nexus.port}/repository/simplify-releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>snapshots</name>
+                    <!-- local docker nexus -->
+                    <url>http://${nexus.host}:${nexus.port}/repository/simplify-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <modules>
+                <module>simplify-platform</module>
+            </modules>
+        </profile>
+        <profile>
+            <!--
+             custom repository profile: snapshots or releases
+             -->
             <id>repository</id>
             <activation>
                 <property>
