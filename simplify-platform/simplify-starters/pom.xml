@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.atsaug.commons</groupId>
+        <artifactId>simplify-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../simplify-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>simplify-starters</artifactId>
+    <packaging>pom</packaging>
+    <name>Simplify Starters</name>
+    <description>Simplify Starters</description>
+    <url>https://github.com/atsaug/simplify</url>
+    <properties>
+        <main.basedir>${basedir}/../..</main.basedir>
+    </properties>
+    <modules>
+        <module>simplify-starter</module>
+        <module>simplify-starter-parent</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <inherited>false</inherited>
+                <executions>
+                    <execution>
+                        <id>assemble-starter-poms</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>src/main/assembly/starter-poms-assembly.xml</descriptor>
+                            </descriptors>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
