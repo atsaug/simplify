@@ -9,6 +9,16 @@
             <username>${nexus.username}</username>
             <password>${nexus.password}</password>
         </server>
+        <server>
+            <id>releases</id>
+            <username>${nexus.username}</username>
+            <password>${nexus.password}</password>
+        </server>
+        <server>
+            <id>snapshots</id>
+            <username>${nexus.username}</username>
+            <password>${nexus.password}</password>
+        </server>
     </servers>
     <mirrors>
         <!-- 
