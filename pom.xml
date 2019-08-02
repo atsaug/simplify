@@ -58,6 +58,9 @@
                     <name>!disable-simplify-default-profile</name>
                 </property>
             </activation>
+            <modules>
+                <module>simplify-platform</module>
+            </modules>
         </profile>
         <!-- 
          M2E profile to allow easy import into eclipse
@@ -71,10 +74,10 @@
                 </property>
             </activation>
             <properties>
+                <m2e.jaxrs.activation>false</m2e.jaxrs.activation>
                 <m2e.jpa.activation>false</m2e.jpa.activation>
                 <m2e.jsf.activation>false</m2e.jsf.activation>
                 <m2e.cdi.activation>false</m2e.cdi.activation>
-                <m2e.jaxrs.activation>false</m2e.jaxrs.activation>
             </properties>
             <modules>
                 <module>simplify-platform</module>
@@ -84,57 +87,56 @@
             </modules>
         </profile>
         <!-- 
-         this profile is activated only when you want to compile platform, 
-         with './mvnw deploy' the components are deployed on the docker nexus
-         -->
-        <profile>
-            <id>platform</id>
+		 with './mvnw deploy' the components are deployed on the nexus server
+         -->		 
+		<profile>
+			<id>nexus</id>
+			<activation>
+				<property>
+					<name>repository-nexus</name>
+				</property>
+			</activation>		 
             <distributionManagement>
                 <repository>
-                    <id>releases</id>
-                    <name>releases</name>
-                    <!-- local docker nexus -->
-                    <url>http://${nexus.host}:${nexus.port}/repository/simplify-releases/</url>
+                    <id>nexus</id>
+                    <name>Simplify releases repository</name>
+                    <url>${repository-nexus}/simplify-releases</url>
                 </repository>
                 <snapshotRepository>
-                    <id>snapshots</id>
-                    <name>snapshots</name>
-                    <!-- local docker nexus -->
-                    <url>http://${nexus.host}:${nexus.port}/repository/simplify-snapshots/</url>
+                    <id>nexus</id>
+                    <name>Simplify snapshots repository</name>
+                    <url>${repository-nexus}/simplify-snapshots</url>
                 </snapshotRepository>
             </distributionManagement>
-            <modules>
-                <module>simplify-platform</module>
-            </modules>
-        </profile>
-        <profile>
-            <!--
-             custom repository profile: snapshots or releases
-             -->
-            <id>repository</id>
-            <activation>
-                <property>
-                    <name>repository</name>
-                </property>
-            </activation>
-            <repositories>
-                <repository>
-                    <id>repository</id>
-                    <url>${repository}</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>repository</id>
-                    <url>${repository}</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
+		</profile>		 
+        <!-- 
+         custom repository profile
+         -->		 
+		<profile>
+			<id>repository</id>
+			<activation>
+				<property>
+					<name>repository</name>
+				</property>
+			</activation>
+			<repositories>
+				<repository>
+					<id>repository</id>
+					<url>${repository}</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>repository</id>
+					<url>${repository}</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
     </profiles>
 </project>

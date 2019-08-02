@@ -23,9 +23,12 @@
 hs_err_pid*
 
 # Eclipse configurations
+.recommenders
+.settings
+target
 .classpath
 .metadata
 .project
-.recommenders
-.settings
-terget
+
+# Maven build files
+.flattened-pom.xml

@@ -6,127 +6,19 @@
     <servers>
         <server>
             <id>nexus</id>
-            <username>${nexus.username}</username>
-            <password>${nexus.password}</password>
-        </server>
-        <server>
-            <id>releases</id>
-            <username>${nexus.username}</username>
-            <password>${nexus.password}</password>
-        </server>
-        <server>
-            <id>snapshots</id>
-            <username>${nexus.username}</username>
-            <password>${nexus.password}</password>
+            <username>${username-nexus}</username>
+            <password>${password-nexus}</password>
         </server>
     </servers>
     <mirrors>
         <!-- 
-         redirect requests to docker sonatype/nexus3 repositories,
-         for more information: https://hub.docker.com/r/sonatype/nexus3
+         redirect requests to nexus repository
          -->
         <mirror>
             <id>nexus</id>
-            <mirrorOf>*</mirrorOf>
-            <url>http://${nexus.host}:${nexus.port}/repository/nexus-public/</url>
+			<name>Maven repository manager running on localhost</name>
+            <url>${repository-nexus}/nexus-public</url>
+			<mirrorOf>central</mirrorOf>
         </mirror>
     </mirrors>
-    <profiles>
-        <!-- 
-         deactivation of repository maven-central (both release and snapshot), enabled by default
-         -->
-        <profile>
-            <id>deny-all</id>
-            <repositories>
-                <repository>
-                    <id>central</id>
-                    <url>https://repo.maven.apache.org/maven2/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>central</id>
-                    <url>https://repo.maven.apache.org/maven2/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-        <!-- 
-         enable profile 'snapshot' for docker nexus repositories
-         -->
-        <profile>
-            <id>snapshot</id>
-            <repositories>
-                <repository>
-                    <id>nexus-libs-snapshot</id>
-                    <url>http://${nexus.host}:${nexus.port}/repository/nexus-public/</url>
-                    <releases>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>nexus-plugins-snapshot</id>
-                    <url>http://${nexus.host}:${nexus.port}/repository/nexus-public/</url>
-                    <releases>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-        <!-- 
-         enable profile 'release' for docker nexus repositories
-         -->
-        <profile>
-            <id>release</id>
-            <repositories>
-                <repository>
-                    <id>nexus-libs-release</id>
-                    <url>http://${nexus.host}:${nexus.port}/repository/nexus-public/</url>
-                    <releases>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </repository>
-           </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>nexus-plugins-release</id>
-                    <url>http://${nexus.host}:${nexus.port}/repository/nexus-public/</url>
-                    <releases>
-                        <checksumPolicy>fail</checksumPolicy>
-                        <updatePolicy>always</updatePolicy>
-                    </releases>
-                    <snapshots>
-                        <enabled>false</enabled>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
-        </profile>
-    </profiles>
 </settings>
