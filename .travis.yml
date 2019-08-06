@@ -8,4 +8,4 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x mvnw
-install: skip
+install: ./simplify-cli/install.sh

@@ -204,7 +204,7 @@ if [ "$MVNW_VERBOSE" = true ]; then
   echo $MAVEN_PROJECTBASEDIR
 fi
 MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
-MAVEN_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/maven.config") $MAVEN_CONFIG"
+MAVEN_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/mvn.config") $MAVEN_CONFIG"
 NEXUS_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/nexus.config") $NEXUS_CONFIG"
 
 # For Cygwin, switch paths to Windows format before running java
