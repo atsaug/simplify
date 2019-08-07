@@ -1,11 +1,27 @@
+#branches:
+#  only:
+#  - master
 language: java
-sudo: true
-dist: trusty
 jdk: oraclejdk9
+dist: trusty
+sudo: true
+group: beta
+cache:
+  yarn: true
+  directories:
+  - "$HOME/.m2/repository"
+  - "$HOME/apache-maven-3.6.1"
 addons:
   apt:
     packages:
       - oracle-java9-installer
+      - libc6
+      - graphviz
+      - ca-certificates
 before_install:
+  - export M2_HOME=$HOME/apache-maven-3.6.1
+  - if [ ! -d $M2_HOME/bin ]; then curl https://archive.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz | tar zxf - -C $HOME; fi
+  - export PATH=$M2_HOME/bin:$PATH
+  - echo "MAVEN_OPTS='-Xmx1g'" > $HOME/.mavenrc
   - chmod +x ./ci/install.sh
 install: ./ci/install.sh
