@@ -1,4 +1,3 @@
 #!/bin/bash
 set -ex
-
-mvn clean install
+mvn -B clean install
