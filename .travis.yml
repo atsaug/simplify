@@ -8,4 +8,6 @@ addons:
       - oracle-java9-installer
 before_install:
   - chmod +x ./simplify-cli/install.sh
+  - chmod +x ./simplify-cli/deploy.sh
 install: ./simplify-cli/install.sh
+deploy:  ./simplify-cli/deploy.sh
