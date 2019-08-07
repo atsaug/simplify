@@ -1,3 +1,3 @@
 #!/bin/bash
 set -ex
-mvn -B clean install
+mvn -B clean install -Pfull

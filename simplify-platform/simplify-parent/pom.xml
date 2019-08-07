@@ -21,7 +21,7 @@
          build properties 
          -->
         <java.version>1.8</java.version>
-        <maven.version>3.5.4</maven.version> <!-- required Java 7 -->
+        <maven.version>3.6.1</maven.version> <!-- required Java 7 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--
@@ -164,15 +164,15 @@
                     <additionalConfig>
                         <file>
                             <name>.settings/org.eclipse.jdt.ui.prefs</name>
-                            <location>${main.basedir}/simplify-eclipse/org.eclipse.jdt.ui.prefs</location>
+                            <location>${main.basedir}/eclipse/org.eclipse.jdt.ui.prefs</location>
                         </file>
                         <file>
                             <name>.settings/org.eclipse.jdt.core.prefs</name>
-                            <location>${main.basedir}/simplify-eclipse/org.eclipse.jdt.core.prefs</location>
+                            <location>${main.basedir}/eclipse/org.eclipse.jdt.core.prefs</location>
                         </file>
                         <file>
                             <name>.settings/org.eclipse.m2e.core.prefs</name>
-                            <location>${main.basedir}/simplify-eclipse/org.eclipse.m2e.core.prefs</location>
+                            <location>${main.basedir}/eclipse/org.eclipse.m2e.core.prefs</location>
                         </file>
                     </additionalConfig>
                 </configuration>
