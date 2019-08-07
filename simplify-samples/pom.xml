@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.atsaug.commons</groupId>
+        <artifactId>simplify-starter-parent</artifactId>
+        <version>${revision}</version>
+        <relativePath>../simplify-platform/simplify-starters/simplify-starter-parent/pom.xml</relativePath>
+    </parent>
+    <artifactId>simplify-samples</artifactId>
+    <packaging>pom</packaging>
+    <name>Simplify Samples</name>
+    <description>Simplify Samples</description>
+    <url>https://github.com/atsaug/simplify</url>
+</project>

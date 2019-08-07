@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- 
+     the basics
+     -->
+    <groupId>org.atsaug.commons</groupId>
+    <artifactId>simplify-build</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <properties>
+        <revision>1.0.0.BUILD-SNAPSHOT</revision>
+        <main.basedir>${basedir}</main.basedir>
+    </properties>
+    <!-- 
+     more project information
+     -->
+    <name>Simplify Build</name>
+    <description>Simplify Build</description>
+    <url>https://github.com/atsaug/simplify</url>
+    <inceptionYear>2015</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repository</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <id>atsaug</id>
+            <name>Francesco Salvatore Guastamacchia</name>
+            <email>guastamacchia.francesco[at]gmail.com</email>
+            <url>https://github.com/atsaug</url>
+            <roles>
+                <role>Technical Lead</role>
+            </roles>
+        </developer>
+    </developers>
+    <!-- 
+     environment settings
+     -->
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/atsaug/simplify/issues</url>
+    </issueManagement>
+    <profiles>
+        <!-- 
+         profile for command line build and activeted by default
+         -->
+        <profile>
+            <id>default</id>
+            <activation>
+                <property>
+                    <name>!disable-simplify-default-profile</name>
+                </property>
+            </activation>
+            <modules>
+                <module>simplify-platform</module>
+            </modules>
+        </profile>
+        <!-- 
+         M2E profile to allow easy import into eclipse
+         see: https://stackoverflow.com/a/28870319
+         -->
+        <profile>
+            <id>m2e</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <properties>
+                <m2e.jaxrs.activation>false</m2e.jaxrs.activation>
+                <m2e.jpa.activation>false</m2e.jpa.activation>
+                <m2e.jsf.activation>false</m2e.jsf.activation>
+                <m2e.cdi.activation>false</m2e.cdi.activation>
+            </properties>
+            <modules>
+                <module>simplify-platform</module>
+                <module>simplify-samples</module>
+                <module>eclipse</module>
+                <module>ci</module>
+            </modules>
+        </profile>
+        <!-- 
+         with './mvnw deploy' the components are deployed on the nexus server
+         -->
+        <profile>
+            <id>nexus</id>
+            <activation>
+                <property>
+                    <name>repository-nexus</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>nexus</id>
+                    <name>Simplify releases repository</name>
+                    <url>${repository-nexus}/simplify-releases</url>
+                </repository>
+                <snapshotRepository>
+                    <id>nexus</id>
+                    <name>Simplify snapshots repository</name>
+                    <url>${repository-nexus}/simplify-snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <!-- 
+         custom repository profile
+         -->
+        <profile>
+            <id>repository</id>
+            <activation>
+                <property>
+                    <name>repository</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>repository</id>
+                    <url>${repository}</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+</project>

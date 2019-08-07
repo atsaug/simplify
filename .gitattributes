@@ -1,0 +1,172 @@
+# Common settings that generally should always be used with your language specific settings
+
+# See https://github.com/alexkaratarakis/gitattributes for specific settings
+# See https://git-scm.com/docs/gitattributes
+
+# Auto detect text files and perform LF normalization
+# http://davidlaing.com/2012/09/19/customise-your-gitattributes-to-become-a-git-ninja/
+* text=auto
+
+#
+# The above will handle all files NOT found below
+#
+
+#
+## DOCUMENTS
+#
+
+*.doc           diff=astextplain
+*.DOC           diff=astextplain
+*.docx          diff=astextplain
+*.DOCX          diff=astextplain
+*.dot           diff=astextplain
+*.DOT           diff=astextplain
+*.pdf           diff=astextplain
+*.PDF           diff=astextplain
+*.rtf           diff=astextplain
+*.RTF           diff=astextplain
+*.markdown      text
+*.md            text
+*.adoc          text
+*.textile       text
+*.mustache      text
+*.csv           text
+*.tab           text
+*.tsv           text
+AUTHORS         text
+CHANGELOG       text
+CHANGES         text
+CONTRIBUTING    text
+COPYING         text
+copyright       text
+*COPYRIGHT*     text
+INSTALL         text
+license         text
+LICENSE         text
+NEWS            text
+readme          text
+*README*        text
+TODO            text
+
+#
+## GRAPHICS
+#
+
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.tif           binary
+*.tiff          binary
+*.ico           binary
+*.svg           binary
+*.eps           binary
+
+#
+## AUDIO
+#
+
+*.kar           binary
+*.m4a           binary
+*.mid           binary
+*.midi          binary
+*.mp3           binary
+*.ogg           binary
+*.ra            binary
+
+#
+## VIDEO
+#
+
+*.3gpp          binary
+*.3gp           binary
+*.as            binary
+*.asf           binary
+*.asx           binary
+*.fla           binary
+*.flv           binary
+*.m4v           binary
+*.mng           binary
+*.mov           binary
+*.mp4           binary
+*.mpeg          binary
+*.mpg           binary
+*.swc           binary
+*.swf           binary
+*.webm          binary
+
+#
+## ARCHIVES
+#
+
+*.7z            binary
+*.gz            binary
+*.rar           binary
+*.tar           binary
+*.zip           binary
+
+#
+## FONTS
+#
+
+*.ttf           binary
+*.eot           binary
+*.otf           binary
+*.woff          binary
+*.woff2         binary
+
+#
+## JAVA
+#
+
+# These files are text and should be normalized (Convert crlf => lf)
+*.css           text
+*.df            text
+*.htm           text
+*.html          text
+*.java          text
+*.js            text
+*.json          text
+*.jsp           text
+*.jspf          text
+*.jspx          text
+*.properties    text
+*.sh            text eol=lf
+*.tld           text
+*.tag           text
+*.tagx          text
+*.xml           text
+*.yml           text
+*.bat           text eol=crlf
+*.coffee        text
+*.cql           text
+*.df            text
+*.ejs           text
+*.less          text
+*.sass          text
+*.scss          text
+*.sql           text
+*.txt           text
+*.ts            text
+*.yaml          text
+
+# These files are binary and should be left untouched
+# (binary is a macro for -text -diff)
+*.class         binary
+*.jar           binary
+*.war           binary
+
+#
+## CONFIGS
+#
+
+*.bowerrc       text
+*.conf          text
+*.config        text
+.editorconfig   text
+.gitattributes  text
+.gitconfig      text
+.gitignore      text
+.htaccess       text
+*.npmignore     text
+.settings.xml

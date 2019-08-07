@@ -204,6 +204,8 @@ if [ "$MVNW_VERBOSE" = true ]; then
   echo $MAVEN_PROJECTBASEDIR
 fi
 MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
+MAVEN_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/mvn.config") $MAVEN_CONFIG"
+NEXUS_CONFIG="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/nexus.config") $NEXUS_CONFIG"
 
 # For Cygwin, switch paths to Windows format before running java
 if $cygwin; then
@@ -219,13 +221,20 @@ fi
 
 # Provide a "standardized" way to retrieve the CLI args that will
 # work with both Windows and non-Windows executions.
-MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
+MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $NEXUS_CONFIG $@"
 export MAVEN_CMD_LINE_ARGS
 
 WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+
+echo "JAVACMD: " $JAVACMD
+echo "MAVEN_OPTS: " $MAVEN_OPTS
+echo "MAVEN_CONFIG: " $MAVEN_CONFIG
+echo "NEXUS_CONFIG: " $NEXUS_CONFIG
+echo "MAVEN_PROJECTBASEDIR: " $MAVEN_PROJECTBASEDIR
+echo "ARGUMENTS COMMAND LINE: " $@
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
   "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
-  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG $NEXUS_CONFIG "$@"
