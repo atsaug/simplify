@@ -82,8 +82,8 @@
             <modules>
                 <module>simplify-platform</module>
                 <module>simplify-samples</module>
-                <module>simplify-eclipse</module>
-                <module>simplify-cli</module>
+                <module>eclipse</module>
+                <module>ci</module>
             </modules>
         </profile>
         <!-- 

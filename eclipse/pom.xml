@@ -9,9 +9,9 @@
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>simplify-cli</artifactId>
+    <artifactId>eclipse</artifactId>
     <packaging>pom</packaging>
-    <name>Command line interface</name>
-    <description>Command line interface</description>
+    <name>Eclipse configurations</name>
+    <description>Eclipse configurations</description>
     <url>https://github.com/atsaug/simplify</url>
 </project>

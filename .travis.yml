@@ -7,5 +7,5 @@ addons:
     packages:
       - oracle-java9-installer
 before_install:
-  - chmod +x ./simplify-cli/install.sh
-install: ./simplify-cli/install.sh
+  - chmod +x ./ci/install.sh
+install: ./ci/install.sh
