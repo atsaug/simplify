@@ -17,8 +17,8 @@
     <properties>
         <main.basedir>${basedir}\..\..</main.basedir>
         <!-- 
-        external dependencies versions 
-        -->
+         external dependencies versions 
+         -->
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
         <oracle.ojdbc8.version>12.2.0.1</oracle.ojdbc8.version>
         <hibernate.version>5.3.10.Final</hibernate.version>
@@ -42,7 +42,7 @@
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>

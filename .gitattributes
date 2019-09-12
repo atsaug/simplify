@@ -169,4 +169,4 @@ TODO            text
 .gitignore      text
 .htaccess       text
 *.npmignore     text
-.settings.xml
+.settings.xml   text

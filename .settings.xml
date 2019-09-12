@@ -16,9 +16,9 @@
          -->
         <mirror>
             <id>nexus</id>
-			<name>Maven repository manager running on localhost</name>
-            <url>${repository-nexus}/nexus-public</url>
-			<mirrorOf>central</mirrorOf>
+            <name>Maven repository manager running on Amazon EC2</name>
+            <url>${repository-nexus}/maven-public</url>
+            <mirrorOf>central</mirrorOf>
         </mirror>
     </mirrors>
 </settings>
