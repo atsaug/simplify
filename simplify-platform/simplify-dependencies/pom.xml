@@ -30,7 +30,7 @@
         <commons-fileupload.version>1.3.3</commons-fileupload.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <commons-net.version>3.6</commons-net.version>
-        <com.google.guava.version>26.0-jre</com.google.guava.version>
+        <com.google.guava.version>29.0-jre</com.google.guava.version>
         <com.jcabi.aspects.version>0.22.6</com.jcabi.aspects.version>
         <org.zalando.problem.web.version>0.22.3</org.zalando.problem.web.version>
         <mapstruct.version>1.2.0.Final</mapstruct.version>
